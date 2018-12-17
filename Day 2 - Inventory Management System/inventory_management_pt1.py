@@ -1,7 +1,7 @@
 # Steven Woods
 # Advent of Code 2018
 # Day 2: Inventory Management System, part 1
-# To run: python chronal_calibration.py <path/to/input_file>
+# To run: python inventory_management_pt1.py <path/to/input_file>
 
 import sys
 inFile = sys.argv[1]
