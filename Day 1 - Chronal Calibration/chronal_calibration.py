@@ -7,9 +7,11 @@ import sys
 inFile = sys.argv[1]
 
 frequency_shifts = []
-for change in open(inFile, "r"):
+f = open(inFile, "r")
+for change in f:
 	change = int(change.rstrip())
 	frequency_shifts.append(change)
+f.close()
 # frequency_shifts is a list containing all the changes in frequency as integers
 
 (current_frequency, first_round, calibrated) = (0, (),())  
