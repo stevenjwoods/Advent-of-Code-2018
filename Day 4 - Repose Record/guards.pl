@@ -3,6 +3,7 @@
 # Steven Woods
 # Advent of Code 2018
 # Day 4: Repose Record (Perl solution)
+# To run: perl guards.pl <path/to/file>
 
 use warnings;
 use strict;
@@ -21,7 +22,6 @@ close DATA;
 
 @data = sort @data;
 
-my %guards;
 my %sleep_duration;
 my %sleep_minutes;
 
@@ -32,7 +32,6 @@ foreach my $line (@data) {
     foreach my $element (@ary) {
       if ($element =~ /#/) {
 	$guard = $element;
-	$guards{$guard}++;
 #	print "\n", $guard, "\n";
       }
     }
