@@ -10,8 +10,10 @@ with open(inFile) as f:
 claims = [x.strip() for x in claims]
 
 counts = dict()
-for c in claims:
-	c = c.replace(":", "")
+claim_inches = dict()
+for claim in claims:
+	claim_inches[claim] = []
+	c = claim.replace(":", "")
 	c = c.split(" ")
 	(location, size) = (c[2].split(","), c[3].split("x"))
 	(x_add, y_add) = (1, 1)
@@ -20,13 +22,25 @@ for c in claims:
 			inch = [str(int(location[0]) + x_add), str(int(location[1]) + y_add)]
 			inch = ",".join(inch)
 			counts[inch] = counts.get(inch, 0) + 1
+			claim_inches[claim].append(inch)
 			x_add += 1
 		x_add = 1  # Reset x
 		y_add += 1
 
-overlapping_inches = 0
+
+(overlapping_inches, unique_claim) = (0, ())
+
 for inch in counts:
 	if counts[inch] > 1:
 		overlapping_inches += 1
 
+for claim in claim_inches:
+	overlaps = ()
+	for inch in claim_inches[claim]:
+		if counts[inch] > 1:
+			overlaps = 1
+	if not overlaps:
+		unique_claim = claim
+
 print "{0} square inches of fabric are within two or more claims.".format(overlapping_inches)
+print "The claim that does not overlap any others is {0}.".format(unique_claim)
