@@ -7,9 +7,18 @@ def make_family(child_quant, existing_nodes_count, child_counter, node_families)
 	if int(child_quant) > 0:
 		for child_number in range(int(child_quant)):
 			existing_nodes_count += 1
-			child_node_id = ascii_uppercase[existing_nodes_count - 1]
+			child_node_id = ()
+			if existing_nodes_count > len(ascii_uppercase):
+				index = existing_nodes_count
+				count = int(1)
+				while index > len(ascii_uppercase):
+					index = index - 26
+					count += 1
+				child_node_id = (ascii_uppercase[index - 1] * int(count))
+			else:
+				child_node_id = ascii_uppercase[existing_nodes_count - 1]
 			child_counter[child_node_id] = int(0)
-			node_families[node_id] += child_node_id   # Fill in node IDs for family
+			node_families[node_id].append(child_node_id)   # Fill in node IDs for family (+= splits str?)
 	return existing_nodes_count, child_counter, node_families
 
 
