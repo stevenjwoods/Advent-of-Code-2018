@@ -22,6 +22,7 @@ def make_family(child_quant, existing_nodes_count, child_counter, node_families)
 	return existing_nodes_count, child_counter, node_families
 
 
+
 import sys
 inFile = sys.argv[1]
 with open(inFile) as f:
@@ -81,4 +82,38 @@ for node in nodes:
 		metadata_count += int(m)
 
 print "The sum of all metadata entries is {0}.".format(metadata_count)
+
+
+# Part 2:
+
+root_value = int(0)
+references = dict()
+lineage = []
+node_id = 'A'
+lineage.append(node_id)
+references[node_id] = nodes[node_id][2:]
+complete = False
+while complete is not True:
+	if not references['A'] and len(lineage) == 1:
+		complete = True
+	else:
+		if references[node_id]:   # If there are still metadata entries (references)
+			child_node_ref, references[node_id] = references[node_id][0], references[node_id][1:]
+			if child_counter[node_id] > 0:   # If the node has children (metadata become references)
+				if int(child_node_ref) <= len(node_families[node_id]):   # If referenced child exists
+					node_id = node_families[node_id][int(child_node_ref) - 1]
+					lineage.append(node_id)
+					references[node_id] = nodes[node_id][2:]
+
+			else:  # If the node has NO children (metadata values get added to root value)
+				for m in nodes[node_id][2:]:
+					root_value += int(m)
+				lineage = lineage[:len(lineage) - 1]
+				node_id = lineage[-1]
+
+		else: 	# If there are no more metadata entries (references)
+			lineage = lineage[:len(lineage) - 1]
+			node_id = lineage[-1]
+
+print "The value of the root node 'A' is {0}.".format(root_value)
 
