@@ -1,7 +1,7 @@
 # Steven Woods
 # Advent of Code 2018
 # Day 2: Inventory Management System, part 2
-# To run: python inventory_management_pt2.py <path/to/input_file>
+# To run: python3 inventory_management_pt2.py <path/to/input_file>
 
 import sys
 inFile = sys.argv[1]
@@ -30,7 +30,7 @@ for box in boxes:
 				counts[other_box] = counts.get(other_box, 0) + 1
 		for other_box in counts:
 			if counts[other_box] == len(box) - 1:
-				print "Boxes {0} and {1} are the correct boxes.".format(box, other_box)
+				print (f"Boxes {box} and {other_box} are the correct boxes.")
 				matching_pair = (box, other_box)
 
 i = 0
@@ -38,4 +38,4 @@ while matching_pair[0][i] == matching_pair[1][i]:
 	i += 1
 common_letters = matching_pair[0][0:i] + matching_pair[0][i+1:]   # Removes the mismatch
 
-print "The common letters are {0}.".format(common_letters)
+print (f"The common letters are {common_letters}.")

@@ -1,7 +1,7 @@
 # Steven Woods
 # Advent of Code 2018
 # Day 5: Alchemical Reduction part 2
-# To run: python reduction_pt2.py <path/to/input_file>
+# To run: python3 reduction_pt2.py <path/to/input_file>
 
 import sys
 inFile = sys.argv[1]
@@ -35,4 +35,4 @@ for c in ascii_lowercase:
 		smallest_reacted_polymer = polymer
 		problematic_unit = c
 
-print "There are {0} units left after removing the problematic unit ({1}/{2}) and fully reacting the polymer.".format(len(smallest_reacted_polymer), problematic_unit.upper(), problematic_unit)
+print (f"There are {len(smallest_reacted_polymer)} units left after removing the problematic unit ({problematic_unit.upper()}/{problematic_unit}) and fully reacting the polymer.")

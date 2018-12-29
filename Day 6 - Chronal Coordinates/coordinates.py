@@ -1,7 +1,7 @@
 # Steven Woods
 # Advent of Code 2018
 # Day 6: Chronal Coordinates
-# To run: python coordinates.py <path/to/input_file>
+# To run: python3 coordinates.py <path/to/input_file>
 
 import sys
 inFile = sys.argv[1]
@@ -79,7 +79,7 @@ for letter in counts:
 		largest_area = counts[letter]
 		best_location = letter.upper()
 
-print "Location {0}, with coordinates {1}, has the largest area ({2}) surrounding it.".format(best_location, locations[best_location], counts[best_location.lower()])
+print (f"Location {best_location}, with coordinates {locations[best_location]}, has the largest area ({counts[best_location.lower()]}) surrounding it.")
 # Part 1 solved
 
 
@@ -98,7 +98,7 @@ for y in grid:
 	x_coordinate = 0
 	y_coordinate += 1
 
-print "The region containing all locations which have a total distance to all given coordinates of less than 10000 has a size of {0}".format(count)
+print (f"The region containing all locations which have a total distance to all given coordinates of less than 10000 has a size of {count}.")
 	
 
 	

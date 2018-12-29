@@ -1,7 +1,7 @@
 # Steven Woods
 # Advent of Code 2018
 # Day 7: Memory Maneuver
-# To run: python memory.py <path/to/input_file>
+# To run: python3 memory.py <path/to/input_file>
 
 def make_family(child_quant, existing_nodes_count, child_counter, node_families):    # Fill in child node IDs to make family
 	if int(child_quant) > 0:
@@ -81,7 +81,7 @@ for node in nodes:
 	for m in nodes[node][2:]:
 		metadata_count += int(m)
 
-print "The sum of all metadata entries is {0}.".format(metadata_count)
+print (f"The sum of all metadata entries is {metadata_count}.")
 
 
 # Part 2:
@@ -115,5 +115,6 @@ while complete is not True:
 			lineage = lineage[:len(lineage) - 1]
 			node_id = lineage[-1]
 
-print "The value of the root node 'A' is {0}.".format(root_value)
+print (f"The value of the root node 'A' is {root_value}.")
+
 

@@ -1,7 +1,7 @@
 # Steven Woods
 # Advent of Code 2018
 # Day 3: No Matter How You Slice It
-# To run: slice_pt1.py <path/to/input_file>
+# To run: python3 slice.py <path/to/input_file>
 
 import sys
 inFile = sys.argv[1]
@@ -42,5 +42,5 @@ for claim in claim_inches:
 	if not overlaps:
 		unique_claim = claim
 
-print "{0} square inches of fabric are within two or more claims.".format(overlapping_inches)
-print "The claim that does not overlap any others is {0}.".format(unique_claim)
+print (f"{overlapping_inches} square inches of fabric are within two or more claims.")
+print (f"The claim that does not overlap any others is {unique_claim}.")

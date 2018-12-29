@@ -1,7 +1,7 @@
 # Steven Woods
 # Advent of Code 2018
 # Day 2: Inventory Management System, part 1
-# To run: python inventory_management_pt1.py <path/to/input_file>
+# To run: python3 inventory_management_pt1.py <path/to/input_file>
 
 import sys
 inFile = sys.argv[1]
@@ -27,4 +27,4 @@ for ID in IDs:
 		box_count3 += 1
 IDs.close()
 
-print "{0} boxes have two of the same letter and {1} boxes have three of the same letter. Checksum = {0} * {1} = {2}".format(box_count2, box_count3, box_count2 * box_count3)
+print (f"{box_count2} boxes have two of the same letter and {box_count3} boxes have three of the same letter. Checksum = {box_count2} * {box_count3} = {box_count2 * box_count3}")

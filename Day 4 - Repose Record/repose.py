@@ -1,7 +1,7 @@
 # Steven Woods
 # Advent of Code 2018
 # Day 4: Repose Recpord
-# To run: python repose.py <path/to/file>
+# To run: python3 repose.py <path/to/file>
 
 import sys
 inFile = sys.argv[1]
@@ -57,7 +57,7 @@ for minute in counts:
 	if counts[minute] > freq:
 		freq = counts[minute]
 		mode = minute
-print "The sleepiest guard is {0}. He slept for {1} minutes. He was asleep most often at 00:{2}.".format(sleepiest_guard, max_sleep, mode)
+print (f"The sleepiest guard is {sleepiest_guard}. He slept for {max_sleep} minutes. He was asleep most often at 00:{mode}.")
 
 (sleepiest_minute, next_sleepiest_minute, sleepiest_guard2) = ((), (), ())
 highest_num_times_asleep = 0
@@ -76,4 +76,4 @@ for guard in sleep_minutes:
 			sleepiest_minute = next_sleepiest_minute
 			sleepiest_guard2 = guard
 
-print "Guard {0} is most frequently asleep on the same minute. He was asleep at 00:{1} a total of {2} times.".format(sleepiest_guard2, sleepiest_minute, highest_num_times_asleep)
+print (f"Guard {sleepiest_guard2} is most frequently asleep on the same minute. He was asleep at 00:{sleepiest_minute} a total of {highest_num_times_asleep} times.")
