@@ -68,11 +68,11 @@ print (f"The correct order of steps is {order}.")
 # Part 2:
 
 table = []
-header = "\t".join(("Sec", "W1", "W2"))
+header = "\t".join(("Sec", "W1", "W2", "W3", "W4", "W5"))
 
 time_required = dict()
 from string import ascii_uppercase
-time = 0
+time = 60
 for c in ascii_uppercase:
 	time += 1
 	time_required[c] = time
@@ -84,19 +84,13 @@ for step in order:
 	time_passed[step] = int(0)
 
 work_complete = False
-prev_line = [str(time), ".", "."]
+prev_line = [str(time), ".", ".", ".", ".", "."]
 while work_complete is not True:
-	line = [str(time), ".", "."]
-	worker_available = False
+	line = [str(time), ".", ".", ".", ".", "."]
 
 	for step in order:
 		if step not in completed_steps and time_passed[step] == time_required[step]:
 			completed_steps += step
-
-	for i in range(1, 3):  # i = 1 and i = 2   (worker columns)
-		if line[i] == ".": # If worker is available
-			if prev_line[i] != "." and prev_line[i] in completed_steps:  # If previous step completed
-				worker_available = True
 
 	for step in order:
 		if step not in completed_steps:   # Then begin looking for which step can be worked on next
@@ -108,24 +102,38 @@ while work_complete is not True:
 					if prereq not in completed_steps:
 						step_unlocked = False
 
-				for i in range(1, 3):  # i = 1 and i = 2
-					if step_unlocked is True and line[i] == ".":  # Left-most available worker found
-						if prev_line[i] == "." or prev_line[i] == step or prev_line[i] in completed_steps:  # Ensure worker is ready to move on
-							line[i] = step  # Adds step to current worker
-							time_passed[step] += 1
-						break  # Break out of loop so won't try to add step to additional available workers
+				if step_unlocked is True:
+					filled = False
+					for i in range(1, 6):  # i = 1 to i = 5
+						if line[i] == ".":  # Left-most available worker found
+							if time_passed[step] > 0 and prev_line[i] == step:  # Pre-fill because worker is on this step
+								line[i] = step
+								time_passed[step] += 1
+								filled = True
+					for i in range(1, 6):  # i = 1 to i = 5
+						if filled is not True:
+							if line[i] == ".":  # Left-most available worker found
+								if prev_line[i] == "." or prev_line[i] in completed_steps:  # Ensure worker is ready to move on
+									line[i] = step  # Adds step to current worker
+									time_passed[step] += 1
+									filled = True  # To prevent letter being added again on this line
 
 			else:	# If there are no prerequisites for the step
-				for i in range(1, 3):  # i = 1 and i = 2
+				filled = False
+				for i in range(1, 6):  # i = 1 to i = 5
 					if line[i] == ".":  # Left-most available worker found
-						if prev_line[i] == "." or prev_line[i] == step or prev_line[i] in completed_steps:  # Ensure worker is ready to move on
-							line[i] = step      # Adds step to current worker
+						if time_passed[step] > 0 and prev_line[i] == step:   # Pre-fill because worker is on this step
+							line[i] = step
 							time_passed[step] += 1
-						break  # Break out of loop so won't try to add step to additional available workers
-	
-	#for l in table:
-	#	print(l)
-	#print ("\n")
+							filled = True
+				for i in range(1, 6):  # i = 1 and i = 2
+					if filled is not True:
+						if line[i] == ".":  # Left-most available worker found
+							if prev_line[i] == "." or prev_line[i] == step or prev_line[i] in completed_steps:  # Ensure worker is ready to move on
+								line[i] = step      # Adds step to current worker
+								time_passed[step] += 1
+								filled = True
+
 	table.append("\t".join(line))
 	prev_line = line
 	time += 1
@@ -135,7 +143,7 @@ while work_complete is not True:
 		work_complete = True
 		break
 
+
 print(header)
 for line in table:
 	print(line)
-
