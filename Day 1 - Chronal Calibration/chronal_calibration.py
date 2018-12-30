@@ -19,7 +19,7 @@ counts = dict()
 while not calibrated:    # Until the same number (frequency) is seen twice, the next change in the list is applied
 	for change in frequency_shifts:
 		counts[current_frequency] = counts.get(current_frequency, 0) + 1
-		if counts[current_frequency] == 2:	# The same number (frequency) has been seen twice - device is calibrated
+		if counts[current_frequency] is 2:	# The same number (frequency) has been seen twice - device is calibrated
 			calibrated = current_frequency  # The frequency at calibration is stored for later output
 			break
 		current_frequency += change

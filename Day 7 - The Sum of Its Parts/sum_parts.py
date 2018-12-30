@@ -105,14 +105,14 @@ while work_complete is not True:
 				if step_unlocked is True:
 					filled = False
 					for i in range(1, 6):  # i = 1 to i = 5
-						if line[i] == ".":  # Left-most available worker found
+						if line[i] is ".":  # Left-most available worker found
 							if time_passed[step] > 0 and prev_line[i] == step:  # Pre-fill because worker is on this step
 								line[i] = step
 								time_passed[step] += 1
 								filled = True
 					for i in range(1, 6):  # i = 1 to i = 5
 						if filled is not True:
-							if line[i] == ".":  # Left-most available worker found
+							if line[i] is ".":  # Left-most available worker found
 								if prev_line[i] == "." or prev_line[i] in completed_steps:  # Ensure worker is ready to move on
 									line[i] = step  # Adds step to current worker
 									time_passed[step] += 1
@@ -121,15 +121,15 @@ while work_complete is not True:
 			else:	# If there are no prerequisites for the step
 				filled = False
 				for i in range(1, 6):  # i = 1 to i = 5
-					if line[i] == ".":  # Left-most available worker found
+					if line[i] is ".":  # Left-most available worker found
 						if time_passed[step] > 0 and prev_line[i] == step:   # Pre-fill because worker is on this step
 							line[i] = step
 							time_passed[step] += 1
 							filled = True
 				for i in range(1, 6):  # i = 1 and i = 2
 					if filled is not True:
-						if line[i] == ".":  # Left-most available worker found
-							if prev_line[i] == "." or prev_line[i] == step or prev_line[i] in completed_steps:  # Ensure worker is ready to move on
+						if line[i] is ".":  # Left-most available worker found
+							if prev_line[i] is "." or prev_line[i] == step or prev_line[i] in completed_steps:  # Ensure worker is ready to move on
 								line[i] = step      # Adds step to current worker
 								time_passed[step] += 1
 								filled = True

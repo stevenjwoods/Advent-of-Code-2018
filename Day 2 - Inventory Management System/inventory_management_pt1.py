@@ -17,9 +17,9 @@ for ID in IDs:
 		ID = ID[1:]   # Remove the counted letter from string
 	(letter_count2, letter_count3) = (False, False)
 	for letter in counts:
-		if counts[letter] == 2:
+		if counts[letter] is 2:
 			letter_count2 = True
-		if counts[letter] == 3:
+		if counts[letter] is 3:
 			letter_count3 = True
 	if letter_count2 is True:
 		box_count2 += 1

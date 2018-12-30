@@ -40,7 +40,7 @@ for c in coordinates:
 y_coordinate, x_coordinate = 0, 0
 for y in grid:  # For each row in the grid
 	for x in y: # For each element in the row
-		if x == ".":
+		if x is ".":
 			min_distance, closest_letters = (), []
 			for letter in locations:
 				distance = abs(x_coordinate - locations[letter][0]) + abs(y_coordinate - locations[letter][1])
@@ -53,7 +53,7 @@ for y in grid:  # For each row in the grid
 				else:
 					min_distance = distance
 					closest_letter = [letter]
-			if len(closest_letter) == 1:
+			if len(closest_letter) is 1:
 				grid[y_coordinate][x_coordinate] = closest_letter[0].lower()
 		x_coordinate += 1
 	x_coordinate = 0

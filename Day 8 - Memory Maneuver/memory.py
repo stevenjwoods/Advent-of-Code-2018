@@ -64,8 +64,8 @@ while numbers:
 		existing_nodes_count, child_counter, node_families = make_family(child_quant, existing_nodes_count, child_counter, node_families)
 		added_child = True
 
-	if (int(nodes[node_id][0]) == 0):
-		if (len(nodes[node_id]) == 2):
+	if (int(nodes[node_id][0]) is 0):
+		if (len(nodes[node_id]) is 2):
 			nodes[node_id] += numbers[:int(nodes[node_id][1])]
 			numbers = numbers[int(nodes[node_id][1]):]
 			if added_child is True:
@@ -94,7 +94,7 @@ lineage.append(node_id)
 references[node_id] = nodes[node_id][2:]
 complete = False
 while complete is not True:
-	if not references['A'] and len(lineage) == 1:
+	if not references['A'] and len(lineage) is 1:
 		complete = True
 	else:
 		if references[node_id]:   # If there are still metadata entries (references)

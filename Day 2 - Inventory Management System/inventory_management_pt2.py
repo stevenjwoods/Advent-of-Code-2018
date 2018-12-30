@@ -29,7 +29,7 @@ for box in boxes:
 			for other_box in matches[letter_pos]:
 				counts[other_box] = counts.get(other_box, 0) + 1
 		for other_box in counts:
-			if counts[other_box] == len(box) - 1:
+			if counts[other_box] is len(box) - 1:
 				print (f"Boxes {box} and {other_box} are the correct boxes.")
 				matching_pair = (box, other_box)
 
