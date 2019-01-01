@@ -1,6 +1,6 @@
 # Steven Woods
 # Advent of Code 2018
-# Day 7: Memory Maneuver
+# Day 8: Memory Maneuver
 # To run: python3 memory.py <path/to/input_file>
 
 def make_family(child_quant, existing_nodes_count, child_counter, node_families):    # Fill in child node IDs to make family
