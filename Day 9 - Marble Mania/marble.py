@@ -9,8 +9,8 @@ players = int(input("Enter the number of players: "))
 last_marble = int(input("Enter how much the last marble is worth: "))
 
 turn = ["[-]", "(0)"]
-output = "\t".join(turn)
-print(output)
+#output = "\t".join(turn)
+#print(output)
 
 scores = dict()
 for i in range(1, players+1):
