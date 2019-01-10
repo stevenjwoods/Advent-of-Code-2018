@@ -1,6 +1,6 @@
 # Steven Woods
 # Advent of Code 2018
-# Day 9: The Stars Align
+# Day 10: The Stars Align
 # To run: python3 stars.py <path/to/input.txt>
 
 def find_distance(lights):
