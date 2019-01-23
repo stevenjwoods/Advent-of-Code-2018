@@ -5,41 +5,38 @@
 
 import sys
 inFile = sys.argv[1]
+
 with open(inFile) as f:
-	claims = f.readlines()
-claims = [x.strip() for x in claims]
+	claims = [x.strip() for x in f.readlines()]
 
 counts = dict()
 claim_inches = dict()
 for claim in claims:
 	claim_inches[claim] = []
-	c = claim.replace(":", "")
-	c = c.split(" ")
-	(location, size) = (c[2].split(","), c[3].split("x"))
-	(x_add, y_add) = (1, 1)
+	c = claim.replace(":", "").split(" ")
+	location, size = c[2].split(","), c[3].split("x")
+	x_add, y_add = 1, 1
 	while y_add <= int(size[1]):
 		while x_add <= int(size[0]):
-			inch = [str(int(location[0]) + x_add), str(int(location[1]) + y_add)]
-			inch = ",".join(inch)
+			inch = str(int(location[0]) + x_add) + "," + str(int(location[1]) + y_add)
 			counts[inch] = counts.get(inch, 0) + 1
 			claim_inches[claim].append(inch)
 			x_add += 1
 		x_add = 1  # Reset x
-		y_add += 1
+		y_add += 1  # Increment y to move row
 
-
-(overlapping_inches, unique_claim) = (0, ())
+overlapping_inches, unique_claim = 0, ()
 
 for inch in counts:
 	if counts[inch] > 1:
 		overlapping_inches += 1
 
 for claim in claim_inches:
-	overlaps = ()
+	overlaps = False
 	for inch in claim_inches[claim]:
 		if counts[inch] > 1:
-			overlaps = 1
-	if not overlaps:
+			overlaps = True
+	if overlaps is False:
 		unique_claim = claim
 
 print (f"{overlapping_inches} square inches of fabric are within two or more claims.")
